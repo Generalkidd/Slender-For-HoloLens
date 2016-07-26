@@ -23,10 +23,10 @@ public class GameControl : MonoBehaviour
             Destroy(slender);
             count = 0;
         }
-        else if(count < 2 && Time.time > 30)
+        else if(count < 1 && Time.time > 30)
         {
             count++;
-            slender = (GameObject)Instantiate(GameObject.Find("Slenderman"), new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 3.5f), new Quaternion(0, 0, 0, 0));
+            slender = (GameObject)Instantiate(GameObject.Find("Slenderman"), new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 10f), new Quaternion(0, 0, 0, 0));
             //slender.SetActive(true);
             //slender.gameObject.GetComponent<Renderer>().enabled = true;
         }
