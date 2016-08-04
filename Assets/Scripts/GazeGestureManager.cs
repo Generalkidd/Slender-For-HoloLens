@@ -27,7 +27,7 @@ public class GazeGestureManager : MonoBehaviour
         };
         recognizer.StartCapturingGestures();
     }
-
+            
     // Update is called once per frame
     void Update()
     {
