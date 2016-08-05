@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.VR.WSA;
 
 public class GameControl : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameControl : MonoBehaviour
 	void Start ()
     {
         //slender = (GameObject)Instantiate(GameObject.Find("Slenderman"), new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 3.5f), new Quaternion(0,0,0,0));
-        
+        //WorldManager.OnPositionalLocatorStateChanged += WorldManager_OnPositionalLocatorStateChanged;
     }
 	
 	// Update is called once per frame
@@ -30,6 +31,38 @@ public class GameControl : MonoBehaviour
             //slender.SetActive(true);
             //slender.gameObject.GetComponent<Renderer>().enabled = true;
         }
-        
-	}
+
+        switch (WorldManager.state)
+        {
+            case PositionalLocatorState.Active:
+                // handle active
+                break;
+            case PositionalLocatorState.Activating:
+            case PositionalLocatorState.Inhibited:
+
+                break;
+            case PositionalLocatorState.OrientationOnly:
+
+                break;
+            case PositionalLocatorState.Unavailable:
+
+                break;
+            default:
+                // only rotational information is available
+                break;
+        }
+
+    }
+
+    private void WorldManager_OnPositionalLocatorStateChanged(PositionalLocatorState oldState, PositionalLocatorState newState)
+    {
+        if (newState == PositionalLocatorState.Active)
+        {
+            // Handle becoming active
+        }
+        else
+        {
+            // Handle becoming rotational only
+        }
+    }
 }
